@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FestFlow Ignovators | Command Center</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Share+Tech+Mono&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+<body class="circuit-theme">
+    <!-- Animated SVG Circuit Background -->
+    <svg class="circuit-container" viewBox="0 0 1000 1000" preserveAspectRatio="xMidYMid slice">
+        <defs>
+            <filter id="glow">
+                <feGaussianBlur stdDeviation="2.5" result="coloredBlur"/>
+                <feMerge>
+                    <feMergeNode in="coloredBlur"/>
+                    <feMergeNode in="SourceGraphic"/>
+                </feMerge>
+            </filter>
+        </defs>
+        <!-- Circuit Paths -->
+        <path class="trace" d="M 0 100 L 200 100 L 250 150 L 500 150 L 550 200 L 1000 200" />
+        <path class="trace" d="M 1000 800 L 800 800 L 750 750 L 500 750 L 450 700 L 0 700" />
+        <path class="trace" d="M 100 0 L 100 200 L 150 250 L 150 500 L 200 550 L 200 1000" />
+        <path class="trace" d="M 900 1000 L 900 800 L 850 750 L 850 500 L 800 450 L 800 0" />
+        
+        <!-- Animated Data Pulses -->
+        <circle class="pulse" r="3" fill="#00f3ff">
+            <animateMotion dur="4s" repeatCount="indefinite" path="M 0 100 L 200 100 L 250 150 L 500 150 L 550 200 L 1000 200" />
+        </circle>
+        <circle class="pulse" r="3" fill="#00f3ff">
+            <animateMotion dur="6s" repeatCount="indefinite" path="M 1000 800 L 800 800 L 750 750 L 500 750 L 450 700 L 0 700" />
+        </circle>
+    </svg>
+
+    <!-- BOOT UP SEQUENCE / LOGIN -->
+    <div id="login-screen" class="overlay active">
+        <div class="terminal-box glass">
+            <div class="terminal-header">
+                <div class="dots"><span></span><span></span><span></span></div>
+                <div class="term-title">FESTFLOW_CORE_V2.0</div>
+            </div>
+            <div class="terminal-body" id="boot-log">
+                <p class="term-line">> INITIALIZING SYSTEM_KERNEL...</p>
+                <p class="term-line">> LOADING_NEURAL_MONITORING_MODULES...</p>
+                <p class="term-line">> CONNECTING_WEBSERIAL_INTERFACE...</p>
+                <div id="login-form-container" class="hidden">
+                    <h2 class="glow-title">ESTABLISH_AUTH_LINK</h2>
+                    <form id="login-form">
+                        <div class="input-wrapper">
+                            <label>IDENT_ID</label>
+                            <input type="text" id="username" autocomplete="off" required>
+                        </div>
+                        <div class="input-wrapper">
+                            <label>ENCRYPT_KEY</label>
+                            <input type="password" id="password" required>
+                        </div>
+                        <button type="submit" class="cyber-btn">EXECUTE_LOGIN</button>
+                    </form>
+                    <p id="auth-error" class="error-text"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN INTERFACE -->
+    <div id="app-interface" class="hidden">
+        <header class="top-nav glass">
+            <div class="nav-left">
+                <div class="brand">
+                    <span class="main-logo">IGNOVATORS</span>
+                    <span class="sub-logo">SYSTEM_OPS</span>
+                </div>
+            </div>
+            <div class="nav-center">
+                <div class="status-indicator">
+                    <div class="led green"></div>
+                    <span id="system-status">CORE_STABLE</span>
+                </div>
+            </div>
+            <div class="nav-right">
+                <button id="hw-connect" class="neon-btn">
+                    <span class="btn-shine"></span>
+                    LINK_HARDWARE
+                </button>
+                <button id="logout-btn" class="util-btn">SHUTDOWN</button>
+            </div>
+        </header>
+
+        <section class="dashboard-grid">
+            <!-- Sidebar: Sector Map -->
+            <aside class="sidebar-pnl glass">
+                <div class="panel-header">SECTOR_LOCALIZATION</div>
+                <div class="zone-grid">
+                    <button class="zone-card active" data-zone="Zone 1">
+                        <div class="zone-id">S_01</div>
+                        <div class="zone-info">
+                            <span class="name">HQ_SECTOR</span>
+                            <span class="status">HARDWARE_PRIMARY</span>
+                        </div>
+                        <div class="alert-blob" id="alert-z1">0</div>
+                    </button>
+                    <button class="zone-card" data-zone="Zone 2">
+                        <div class="zone-id">S_02</div>
+                        <div class="zone-info">
+                            <span class="name">ALPHA_WEST</span>
+                            <span class="status">REMOTE_MONITORING</span>
+                        </div>
+                        <div class="alert-blob" id="alert-z2">0</div>
+                    </button>
+                    <button class="zone-card" data-zone="Zone 3">
+                        <div class="zone-id">S_03</div>
+                        <div class="zone-info">
+                            <span class="name">BETA_NORTH</span>
+                            <span class="status">REMOTE_MONITORING</span>
+                        </div>
+                        <div class="alert-blob" id="alert-z3">0</div>
+                    </button>
+                    <button class="zone-card" data-zone="Zone 4">
+                        <div class="zone-id">S_04</div>
+                        <div class="zone-info">
+                            <span class="name">DELTA_EXT</span>
+                            <span class="status">REMOTE_MONITORING</span>
+                        </div>
+                        <div class="alert-blob" id="alert-z4">0</div>
+                    </button>
+                </div>
+                
+                <div class="hw-control-box glass">
+                    <div class="label">HARDWARE_NODE: <span id="hw-name">Ignovator-01</span> <span class="edit-icon" id="edit-name">✎</span></div>
+                    <div class="label">COM_INTERFACE: <span id="com-status" class="muted">AWAITING_LINK</span></div>
+                    <div class="hw-vitals" id="hw-vitals">
+                        <div class="vital">
+                            <span class="icon">❤️</span>
+                            <span id="hw-pulse">--</span> BPM
+                        </div>
+                        <div class="vital">
+                            <span class="icon">📍</span>
+                            <span id="hw-loc">--</span>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Main Content: Monitoring Views -->
+            <main class="content-pnl">
+                <div class="tabs-bar">
+                    <button class="tab-trigger active" data-tab="active">ACTIVE_NODES</button>
+                    <button class="tab-trigger" data-tab="panic">PANIC_LEVEL_ALERTS</button>
+                </div>
+
+                <div class="scroll-container">
+                    <div id="active-panel" class="tab-panel">
+                        <div class="bands-layout" id="active-bands-grid"></div>
+                    </div>
+                    <div id="panic-panel" class="tab-panel hidden">
+                        <div class="bands-layout" id="panic-bands-grid"></div>
+                    </div>
+                </div>
+            </main>
+
+            <!-- Right Panel: Geospatial & Terminal -->
+            <aside class="data-pnl glass">
+                <div class="panel-header">GEOSPATIAL_TRACKING</div>
+                <div id="map-container"></div>
+                
+                <div class="terminal-stream glass">
+                    <div class="term-header">SERIAL_DATA_STREAM</div>
+                    <div id="serial-output" class="stream-content">
+                        <p class="muted">Initializing stream listener...</p>
+                    </div>
+                </div>
+            </aside>
+        </section>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
