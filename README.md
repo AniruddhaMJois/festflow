@@ -73,5 +73,5 @@ Open `index.html` in a WebSerial-compatible browser (Google Chrome or Microsoft 
 
 ---
 <div align="center">
-  <sub>Made with ❤️ by <b>Team Ignovators</b> | © 2026 FestFlow Systems</sub>
+  <sub>Made with ❤️ by <b>Team Ignovators</b></sub>
 </div>
