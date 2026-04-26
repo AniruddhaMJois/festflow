@@ -1,77 +1,45 @@
-# 🚀 FESTFLOW | THE COMMAND CENTER
+# 🚀 FestFlow | Ignovators Command Center
 
-<div align="center">
-  <img src="dashboard_preview.png" alt="FestFlow Dashboard Mockup" width="800px" />
-  <br />
-  <img src="https://img.shields.io/badge/Team-Ignovators-00f3ff?style=for-the-badge&logo=opsgenie&logoColor=white" alt="Team Ignovators" />
-  <img src="https://img.shields.io/badge/Project-FestFlow-bc13fe?style=for-the-badge" alt="Project FestFlow" />
-  <img src="https://img.shields.io/badge/Vitals-Real--Time-ff0055?style=for-the-badge" alt="Real-Time Vitals" />
-</div>
+Real-time IoT Dashboard for large-scale event management and safety monitoring.
 
----
+FestFlow is a high-performance, real-time command center designed by **Team Ignovators** to streamline event logistics and ensure attendee safety. By monitoring real-time vitals and geospatial data, it allows for instant response to critical incidents across multiple sectors.
 
-## 🌌 THE VISION
-**FestFlow** is the ultimate event management nexus. Developed by **Team Ignovators**, it transforms complex hardware data into a stunning, actionable Command Center. Monitor every heartbeat, every movement, and every alert within a unified, high-octane digital environment.
+- 📊 Real-time Monitoring: Live visualization of heart rate (BPM) and vital statistics.
+- 📍 Sector Tracking: Geospatial localization across HQ, Alpha, Beta, and Delta zones.
+- 🚨 Panic Alert Logic: Automated detection of vital anomalies with instant priority flagging.
+- 🔌 Hardware Link: Seamless connection via the WebSerial API for direct monitoring.
+- 💻 Live Data Stream: Raw serial telemetry for real-time debugging and auditing.
 
-> *"Where safety meets state-of-the-art technology."*
+## 🛠️ System Architecture
+The system utilizes a distributed sensing layer connected to a web-based command interface.
+- **Hardware Integration**: ESP32 / Arduino based monitoring nodes.
+- **Sensing Protocol**:
+  - ❤️ Heart Rate Sensors: Pulse monitoring.
+  - 📍 Localization Nodes: Zone-based tracking.
+- **Communication**: WebSerial API (9600 Baud) for direct browser-to-hardware data transfer.
+- **Frontend**: HTML5, CSS3 (Glassmorphism), Vanilla JavaScript (ES6+).
+- **Mapping**: Leaflet.js for real-time geospatial overlay.
 
----
+## 💻 Tech Stack
+- **Languages**: HTML5, CSS3, JavaScript (ES6+)
+- **Design**: Cyber-Industrial UI with Glassmorphism and Neon accents.
+- **Protocol**: WebSerial API.
+- **Mapping Engine**: Leaflet.js.
 
-## ✨ ELITE FEATURES
+## 🛠️ Setup & Installation
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/AniruddhaMJois/festflow.git
+   ```
+2. **Open the dashboard**:
+   Simply open `index.html` in any modern browser (Chrome/Edge recommended for WebSerial support).
+3. **Hardware Connection**:
+   - Connect your monitoring hardware.
+   - Click **"LINK_HARDWARE"** on the dashboard.
+   - Authorize the connection to start the data stream.
 
-### ⚡ Neural Interface (WebSerial)
-Connect directly to your hardware nodes via the WebSerial API. Experience zero-latency data streaming from ESP32/Arduino-based wristbands.
+## 👨‍💻 Team IGNOVATORS
+- **College**: Vidya Vardhaka College of Engineering (VVCE), Mysuru.
+- **Project**: FestFlow Event Management System.
 
-### 📍 Geospatial Matrix
-Real-time GPS and sector-based localization. Track your assets across HQ, Alpha, Beta, and Delta zones with integrated Leaflet.js mapping.
-
-### 🚨 Panic Alert Protocol
-An automated watchdog system that monitors vitals. Any anomaly (like a Heart Rate spike > 160 BPM) triggers a system-wide Panic Level Alert with neon-themed visual cues.
-
-### 🎨 Cyber-Circuit Aesthetic
-An immersive interface featuring:
-- **Animated SVG Trace Paths**: Data pulses moving through virtual circuitry.
-- **Glassmorphic Panels**: Sleek, transparent UI layers for maximum clarity.
-- **Dynamic Status LEDs**: Instant visual feedback on system health.
-
----
-
-## 🛠️ CORE ARCHITECTURE
-
-| Layer | Technology |
-| :--- | :--- |
-| **Logic** | JavaScript (ES6+ / Async) |
-| **Styling** | Vanilla CSS3 (Custom Design System) |
-| **Hardware** | WebSerial API |
-| **Mapping** | Leaflet.js |
-| **Fonts** | Orbitron, Share Tech Mono, Rajdhani |
-
----
-
-## 🚀 DEPLOYMENT
-
-### 1. Initialize
-Clone the core repository to your local machine:
-```bash
-git clone https://github.com/AniruddhaMJois/festflow.git
-```
-
-### 2. Launch Interface
-Open `index.html` in a WebSerial-compatible browser (Google Chrome or Microsoft Edge).
-
-### 3. Establish Link
-- **Login**: Use the terminal-themed auth portal.
-- **Link**: Click **LINK_HARDWARE** to select your COM port.
-- **Monitor**: Watch as the system synchronizes with your hardware nodes.
-
----
-
-## 👥 THE IGNOVATORS TEAM
-**Pioneering the future of festival and event safety.**
-
-*Lead Developers & Hardware Architects dedicated to excellence.*
-
----
-<div align="center">
-  <sub>Made with ❤️ by <b>Team Ignovators</b></sub>
-</div>
+Built with ❤️ by **Team IGNOVATORS** at VVCE, Mysuru. Stay Safe. Stay Flowing. ⚡
